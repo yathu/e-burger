@@ -22,3 +22,13 @@ select,
 textarea {
     max-width: 280px;
 }
+.home-banner{
+    background-image: url("../myimage/homeBurger.png");
+    height: 400px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.home-banner h1{
+    text-transform: capitalize;
+}
