@@ -70,6 +70,12 @@ textarea {
     color: var(--color-primary) !important;
     font-family: Rubik-Medium, sans-serif;
 }
+.main-nav li a {
+    color: #8f8f8f !important;
+}
+.main-nav li a:hover {
+    color: var(--color-secondary) !important;
+}
 
 .home-banner {
     /*background-image: url("../myimage/homeBurger.png");*/
@@ -137,7 +143,13 @@ textarea {
     border-radius: 5px;
     /*margin: 0 0 7px 0;*/
     padding: 15px;
+    overflow: hidden;
 }
+.product-list .list-product-item .product-content:hover img {
+    transition: all ease-in-out 2.5s;
+    transform: scale(1.1);
+}
+
 .product-list .list-product-item .product-content h4 {
     font-family: Rubik-Medium,sans-serif;
     font-size: 20px;
@@ -163,6 +175,196 @@ textarea {
     background-color: #ffd4d4;
     font-size: 18px;
 }
+
+*{
+    box-sizing: border-box;
+}
+
+.shopping-cart-container{
+    background-color: #f9f9f9;
+    padding: 25px 15px;
+}
+
+.shopping-cart{
+    width: 750px;
+    height: auto;
+    margin: 5em auto;
+    background: #FFF;
+    box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+    border-radius: 0.5em;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.shopping-cart .title{
+    height: 3.75em;
+    border-bottom: 1px solid #E1E8EE;
+    padding: 1.25em 1.75em;
+    color: #5E6977;
+    font-size: 1.125em;
+    font-weight: 400;
+}
+.shopping-cart .item{
+    padding: 1.25em 1.75em;
+    height: 7.5em;
+    display: flex;
+}
+.shopping-cart .item:nth-child(1) {
+    border-top: 1px solid #E1E8EE;
+}
+.shopping-cart .item {
+    border-bottom: 1px solid #E1E8EE;
+}
+
+.shopping-cart .buttons{
+    position: relative;
+    padding-top: 1.75em;
+    margin-right: 3.5em;
+}
+.shopping-cart .delete-btn,
+.shopping-cart .like-btn{
+    display: inline-block;
+    cursor: pointer;
+}
+.shopping-cart .delete-btn{
+    width: 18px;
+    height: 17px;
+    background: url("https://designmodo.com/demo/shopping-cart/delete-icn.svg") no-repeat center;
+}
+.shopping-cart .like-btn{
+    position: absolute;
+    top: 9px;
+    left: 15px;
+    background: url("https://designmodo.com/demo/shopping-cart/twitter-heart.png");
+    width: 60px;
+    height: 60px;
+    background-size: 2900%;
+    background-repeat: no-repeat;
+}
+
+.shopping-cart .is-active{
+    animation-name: animate;
+    animation-duration: .8s;
+    animation-iteration-count: 1;
+    animation-timing-function: steps(28);
+    animation-fill-mode: forwards;
+}
+@keyframes animate{
+    0% {background-position: left;}
+    50% {background-position: right;}
+    100% {background-position: right;}
+}
+
+.shopping-cart .image{
+    margin-right: 50px;
+    max-width: 100%;
+}.shopping-cart .image img{
+    max-width: 100%;
+    max-height: 80px;
+}
+.shopping-cart .description{
+    padding-top: 10px;
+    margin-right: 60px;
+    width: 115px;
+}
+.shopping-cart .description span{
+    display: block;
+    font-size: 1em;
+    color: #43484D;
+    font-weight: 400;
+}
+.shopping-cart .description span:first-child{
+    margin-bottom: 5px;
+}
+.shopping-cart .description span:last-child{
+    font-weight: 300;
+    margin-top: 8px;
+    color: #86939E;
+}
+
+.shopping-cart .quantity{
+    padding-top: 20px;
+    margin-right: 60px;
+}
+.shopping-cart .quantity input{
+    -webkit-appearance: none;
+    border: none;
+    text-align: center;
+    width: 32px;
+    font-size: 1em;
+    color: #43484D;
+    font-weight: 300;
+}
+.shopping-cart button[class*=btn] {
+    width: 30px;
+    height: 30px;
+    background-color: #E1E8EE;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+.shopping-cart .minus-btn img{
+    margin-bottom: 3px;
+}
+.shopping-cart .plus-btn img{
+    margin-top: 2px;
+}
+
+.shopping-cart button:focus,
+.shopping-cart input:focus{
+    outline: 0;
+}
+
+.shopping-cart .total-price{
+    width: 83px;
+    padding-top: 27px;
+    text-align: center;
+    font-size: 1em;
+    color: #43484D;
+    font-weight: 300;
+}
+
+.shopping-cart .checkout-btn {
+    background: #ff5049;
+    margin: 25px 40px;
+    border: 0;
+    padding: 11px 25px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 13px;
+    color: #FFFFFF;
+}
+
+
+/* media queries */
+@media (max-width: 800px) {
+    .shopping-cart .shopping-cart{
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+    .shopping-cart .item {
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .shopping-cart .image img{
+        width: 50%;
+    }
+    .shopping-cart .image,
+    .shopping-cart .quantity,
+    .shopping-cart .description{
+        width: 100%;
+        text-align: center;
+        margin: 6px 0;
+    }
+    .shopping-cart .buttons{
+        margin-right: 20px;
+    }
+}
+
 
 
 @media (min-width: 1200px) {

@@ -136,6 +136,14 @@ namespace ADproject.Controllers
         {
             return View();
         }
+        
+        public ActionResult Cart()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+        
         //-------------------------------------------------------------
         public ActionResult GetData()
         {
