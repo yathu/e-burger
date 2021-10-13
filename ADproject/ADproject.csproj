@@ -159,8 +159,17 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\rubik-bold-webfont.woff" />
+    <Content Include="fonts\rubik-bold-webfont.woff2" />
+    <Content Include="fonts\rubik-light-webfont.woff" />
+    <Content Include="fonts\rubik-light-webfont.woff2" />
+    <Content Include="fonts\rubik-medium-webfont.woff" />
+    <Content Include="fonts\rubik-medium-webfont.woff2" />
+    <Content Include="fonts\rubik-regular-webfont.woff" />
+    <Content Include="fonts\rubik-regular-webfont.woff2" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Models\Model1.Context.tt">
@@ -177,6 +186,7 @@
     <Content Include="myimage\homeBurger.png" />
     <Content Include="myimage\chinees.jpg" />
     <Content Include="myimage\Indian spicy.jpg" />
+    <Content Include="myimage\product.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\Model1.edmx">

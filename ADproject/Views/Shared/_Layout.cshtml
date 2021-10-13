@@ -1,44 +1,68 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    
+    <link rel="stylesheet" runat="server" media="screen" href="~/Content/font.css" />
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:darkblue" >
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"  data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse" >
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Customer", "Customer", "Home")</li>
-                    <li>@Html.ActionLink("Admin", "Admin", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
+<div class="navbar navbar-inverse navbar-fixed-top main-nav">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("E-Burger", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Customer", "Customer", "Home")</li>
+                <li>@Html.ActionLink("Admin", "Admin", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" style="display: flex; justify-content: center; align-items: center">
+                        <?xml version="1.0" encoding="UTF-8"?>
+
+                        <svg width="13px" height="16px" viewBox="0 0 13 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+                            <title>shopping-bag</title>
+                            <desc>Created with Sketch.</desc>
+                            <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="index-1.3" transform="translate(-1852.000000, -77.000000)" fill="#231F20" fill-rule="nonzero">
+                                    <g id="shopping-bag" transform="translate(1852.000000, 77.000000)">
+                                        <path d="M3.50810811,3.88706564 L3.50810811,4.43243243 L0.877799228,4.43243243 C0.612355212,4.43243243 0.4,4.64478764 0.4,4.91023166 L0.4,13.2934363 C0.4,14.6496139 1.5003861,15.75 2.85656371,15.75 L10.4289575,15.75 C11.7851351,15.75 12.8855212,14.6496139 12.8855212,13.2934363 L12.8855212,4.91023166 C12.8855212,4.64478764 12.673166,4.43243243 12.407722,4.43243243 L9.77741313,4.43243243 L9.77741313,3.88706564 C9.77741313,2.15926641 8.37297297,0.75 6.64034749,0.75 C4.91254826,0.754826255 3.50810811,2.15926641 3.50810811,3.88706564 Z M9.2996139,7.0530888 C9.56505792,7.0530888 9.77741313,6.84073359 9.77741313,6.57528958 L9.77741313,5.38803089 L11.9299228,5.38803089 L11.9299228,13.2934363 C11.9299228,14.1235521 11.2542471,14.7944015 10.4289575,14.7944015 L2.85656371,14.7944015 C2.02644788,14.7944015 1.35559846,14.1187259 1.35559846,13.2934363 L1.35559846,5.38803089 L3.50810811,5.38803089 L3.50810811,6.57528958 C3.50810811,6.84073359 3.72046332,7.0530888 3.98590734,7.0530888 C4.25135135,7.0530888 4.46370656,6.84073359 4.46370656,6.57528958 L4.46370656,5.38803089 L8.82181467,5.38803089 L8.82181467,6.57528958 C8.82181467,6.84073359 9.03416988,7.0530888 9.2996139,7.0530888 Z M8.82181467,3.88706564 L8.82181467,4.43243243 L4.46370656,4.43243243 L4.46370656,3.88706564 C4.46370656,2.68532819 5.44343629,1.70559846 6.64517375,1.70559846 C7.84208494,1.71042471 8.82181467,2.68532819 8.82181467,3.88706564 Z" id="Shape"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        <span style="margin-left: 7px;">( 0 )</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Karunakaran and Yathavan</p>
-        </footer>
-    </div>
+</div>
+<div class="container body-content">
+    @RenderBody()
+    <hr/>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Karunakaran and Yathavan</p>
+    </footer>
+</div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
 </body>
 </html>
