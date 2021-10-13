@@ -1,0 +1,283 @@
+﻿
+@{
+    ViewBag.Title = "Customer";
+}
+
+<h2>Customer</h2>
+<div class="container">
+    <div class="master">
+        <h2>Order</h2>
+        <table class="table table-responsive">
+            <tr>
+                <td>Order No</td>
+                <td>
+                    <input type="text" id="orderNo" class="form-control" />
+                    <span class="error">Order no required</span>
+                </td>
+                <td>Order Date</td>
+                <td>
+                    <input type="text" id="orderDate" class="form-control" />
+                    <span class="error">Valid order date required (ex: MM-dd-yyyy)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>TPNO</td>
+                <td colspan="3">
+                    <input type="text" id="TPNO" class="form-control" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="details">
+        <h2>
+            Order items
+        </h2>
+        <table class="table table-responsive">
+            <tr>
+
+                <td>Product</td>
+                <td>Quantity</td>
+                <td>Price</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr class="mycontainer" id="mainrow">
+                <td>
+
+
+                    <select class="form-control" onchange="getValue()" id="product" name="product"></select>
+
+
+                    <span class="error">Select product</span>
+                </td>
+                @*<td> <input type="text" id="product" class="product form-control"  /> </td>*@
+                <td>
+                    <input type="text" id="quantity" class="quantity form-control" />
+                    <span class="error">Valid quantity required</span>
+                </td>
+                <td>
+                    <input type="text" id="Price" />
+                    <span class="error">Valid rate required</span>
+                </td>
+                
+                <td>
+                    <input type="button" id="add" value="Add" style="width:80px" class="btn btn-success" />
+                </td>
+
+            </tr>
+        </table>
+ 
+        <div id="orderItems">
+            <table class="table table-responsive" id="orderdetailsItems"></table>
+            <span id="orderItemError" style="color:red"></span>
+        </div>
+        <div style="padding:10px 0; text-align:right">
+            <input id="submit" type="button" value="Save Order" class="btn btn-warning" style="padding:10px 20px" />
+        </div>
+    </div>
+</div>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="~/Scripts/myScripts.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#orderDate').datepicker({
+            dateFormat: 'mm-dd-yy'
+        })
+    })
+</script>
+<style>
+    span.error {
+        display: block;
+        visibility: hidden;
+        color: red;
+        font-size: 90%;
+    }
+
+    tr.error {
+        background-color: rgba(255,0,0,0.35);
+    }
+</style>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        //-------------------------------------------------------
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "/Home/GetData",
+                data: "{}",
+                success: function (data) {
+                    var s = '<option value="-1">Please Select a item</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        s += '<option value="' + data[i].Price + '">' + data[i].ProductName + '</option>';
+                    }
+                    $("#product").html(s);
+                }
+            });
+        });
+
+        function getValue() {
+            var myVal = $("#product").val();
+            $("#Price").val(myVal);
+        }
+
+
+        //---------------------------------------------------
+
+
+        $(document).ready(function () {
+            //Add button click event
+            $('#add').click(function () {
+                //validation and add order items
+                var isAllValid = true;
+
+
+                if ($('#product').val() == "0") {
+                    isAllValid = false;
+                    $('#product').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#product').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if (!($('#quantity').val().trim() != '' && (parseInt($('#quantity').val()) || 0))) {
+                    isAllValid = false;
+                    $('#quantity').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#quantity').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if (!($('#Price').val().trim() != '' && !isNaN($('#Price').val().trim()))) {
+                    isAllValid = false;
+                    $('#Price').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#Price').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if (isAllValid) {
+                    var $newRow = $('#mainrow').clone().removeAttr('id');
+                    //$('.pc', $newRow).val($('#productCategory').val());
+                    $('.product', $newRow).val($('#product').val());
+
+                    //Replace add button with remove button
+                    $('#add', $newRow).addClass('remove').val('Remove').removeClass('btn-success').addClass('btn-danger');
+
+                    //remove id attribute from new clone row
+                    $('#product,#quantity,#Price,#add', $newRow).removeAttr('id');
+                    $('span.error', $newRow).remove();
+                    //append clone row
+                    $('#orderdetailsItems').append($newRow);
+
+                    //clear select data
+                    $('#product').val('0');
+                    $('#quantity,#Price').val('');
+                    $('#orderItemError').empty();
+                }
+
+            })
+
+            //remove button click event
+            $('#orderdetailsItems').on('click', '.remove', function () {
+                $(this).parents('tr').remove();
+            });
+
+            $('#submit').click(function () {
+                var isAllValid = true;
+
+                //validate order items
+                $('#orderItemError').text('');
+                var list = [];
+                var errorItemCount = 0;
+                $('#orderdetailsItems tbody tr').each(function (index, ele) {
+                    if (
+                        $('select.product', this).val() == "0" ||
+                        (parseInt($('.quantity', this).val()) || 0) == 0 ||
+                        $('.Price', this).val() == "" ||
+                        isNaN($('.Price', this).val())
+                    ) {
+                        errorItemCount++;
+                        $(this).addClass('error');
+                    } else {
+                        var orderItem = {
+                            ProductId: $('select.product', this).val(),
+                            Quantity: parseInt($('.quantity', this).val()),
+                            Rate: parseFloat($('.Price', this).val())
+                        }
+                        list.push(orderItem);
+                    }
+                })
+
+                if (errorItemCount > 0) {
+                    $('#orderItemError').text(errorItemCount + " invalid entry in order item list.");
+                    isAllValid = false;
+                }
+
+                if (list.length == 0) {
+                    $('#orderItemError').text('At least 1 order item required.');
+                    isAllValid = false;
+                }
+
+                if ($('#orderNo').val().trim() == '') {
+                    $('#orderNo').siblings('span.error').css('visibility', 'visible');
+                    isAllValid = false;
+                }
+                else {
+                    $('#orderNo').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if ($('#orderDate').val().trim() == '') {
+                    $('#orderDate').siblings('span.error').css('visibility', 'visible');
+                    isAllValid = false;
+                }
+                else {
+                    $('#orderDate').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if (isAllValid) {
+                    var data = {
+                        OrderNo: $('#orderNo').val().trim(),
+                        OrderDateString: $('#orderDate').val().trim(),
+                        Description: $('#TPNO').val().trim(),
+                        OrderDetails: list
+                    }
+
+                    $(this).val('Please wait...');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/home/save',
+                        data: JSON.stringify(data),
+                        contentType: 'application/json',
+                        success: function (data) {
+                            if (data.status) {
+                                alert('Successfully saved');
+                                //here we will clear the form
+                                list = [];
+                                $('#orderNo,#orderDate,#TPNO').val('');
+                                $('#orderdetailsItems').empty();
+                            }
+                            else {
+                                alert('Error');
+                            }
+                            $('#submit').val('Save');
+                        },
+                        error: function (error) {
+                            console.log(error);
+                            $('#submit').val('Save');
+                        }
+                    });
+                }
+
+            });
+
+        });
+            //LoadCategory($('#productCategory'));
+    </script>
+
+}
+
