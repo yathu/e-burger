@@ -143,6 +143,12 @@ namespace ADproject.Controllers
 
             return View();
         }
+        public ActionResult Adminnew()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
         
         //-------------------------------------------------------------
         public ActionResult GetData()
