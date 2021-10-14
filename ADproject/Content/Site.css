@@ -474,6 +474,10 @@ main {
     padding-left: 10px;
 }
 
+.full-height{
+    min-height: calc(100vh - 150px);
+}
+
 
 .activity-feed {
     grid-row: 4 / 6;
