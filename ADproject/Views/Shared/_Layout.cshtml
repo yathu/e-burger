@@ -6,8 +6,8 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    
-    <link rel="stylesheet" runat="server" media="screen" href="~/Content/font.css" />
+
+    <link rel="stylesheet" runat="server" media="screen" href="~/Content/font.css"/>
 
 </head>
 <body>
@@ -63,6 +63,11 @@
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
 @RenderSection("scripts", required: false)
 </body>
 </html>

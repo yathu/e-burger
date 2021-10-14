@@ -150,6 +150,27 @@ namespace ADproject.Controllers
             return View();
         }
         
+        public ActionResult Registration()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        //For user registration
+        public ActionResult Registration(tblRegistration _tblRegistration)
+        {
+            if (ModelState.IsValid)
+            {
+                DB_Entities db = new DB_Entities();
+
+                db.tblRegistration.Add(_tblRegistration);
+                db.SaveChanges();
+                
+            }
+            return View(_tblRegistration);
+        }
+        
         //-------------------------------------------------------------
         public ActionResult GetData()
         {

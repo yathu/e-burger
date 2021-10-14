@@ -148,6 +148,11 @@ textarea {
     overflow: hidden;
 }
 
+.product-list .list-product-item .product-content img {
+    min-height: 215px;
+    max-height: 215px;
+}
+
 .product-list .list-product-item .product-content:hover img {
     transition: all ease-in-out 2.5s;
     transform: scale(1.1);

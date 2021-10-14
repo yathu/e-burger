@@ -15,6 +15,7 @@ namespace ADproject
         public DbSet<Item> Item { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
+        public DbSet<tblRegistration> tblRegistration { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -23,6 +24,7 @@ namespace ADproject
             modelBuilder.Entity<Order>().ToTable("Order");
             modelBuilder.Entity<OrderDetails>().ToTable("OrderDetails");
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<tblRegistration>().ToTable("tblRegistration");
 
             base.OnModelCreating(modelBuilder);
 

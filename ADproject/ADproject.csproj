@@ -152,6 +152,7 @@
     </Compile>
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetails.cs" />
+    <Compile Include="Models\tblRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +184,15 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="myimage\002.jpg" />
+    <Content Include="myimage\burger1.webp" />
+    <Content Include="myimage\burger10.png" />
+    <Content Include="myimage\burger3.png" />
+    <Content Include="myimage\burger4.png" />
+    <Content Include="myimage\burger5.png" />
+    <Content Include="myimage\burger6.png" />
+    <Content Include="myimage\burger7.png" />
+    <Content Include="myimage\burger8.png" />
+    <Content Include="myimage\burger9.png" />
     <Content Include="myimage\homeBurger.png" />
     <Content Include="myimage\chinees.jpg" />
     <Content Include="myimage\Indian spicy.jpg" />
@@ -209,6 +219,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Views\Home\Adminnew.cshtml" />
     <Content Include="Views\Home\Cart.cshtml" />
+    <Content Include="Views\Home\Registration.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

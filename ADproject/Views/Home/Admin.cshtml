@@ -1,79 +1,74 @@
 ﻿@model ADproject.Models.Admin
 @{
-    Layout = null;
-   
+    ViewBag.Title = "Login";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Admin</title>
-    <style>
-        #login-div{
-            position:absolute;
-            left:40%;
-            top:40%;
-            border:1px solid #ccc;
-            padding:10px 10px;
-            
-        }
-        field-validation-error{
-            color:red;
-        }
-    </style>
-</head>
-<body>
-    
-    <div id="login-div">
-        @using (Html.BeginForm("Autherize", "Home", FormMethod.Post))
-        {
-        <table>
-            <tr>
-                <td></td>
-                <td><h3>Login</h3></td>
-            </tr>
-            <tr></tr>
-            <tr>
-                <td>
+<div id="login-div" style="display: flex; justify-content: center; min-height: calc(100vh - 150px);align-items: center;background-color: #d9d9d9;">
+    <div class="panel panel-default" style="display: flex;flex-direction: column; max-width: 310px;">
+        <div class="panel-body">
+
+            <h3 class="text-center">Login</h3>
+            <hr/>
+            <br>
+
+            @using (Html.BeginForm("Autherize", "Home", FormMethod.Post, new {@style = "margin:auto;min-width:300px"}))
+            {
+                <div class="form-group">
                     @Html.LabelFor(model => model.UserName)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.UserName)
-                </td>
-            </tr>
+                    @Html.EditorFor(model => model.UserName, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.UserName)
 
-            <tr>
-                <td></td>
-                <td>@Html.ValidationMessageFor(model => model.UserName)</td>
-            </tr>
-            <tr></tr>
-            <tr>
-                <td>@Html.LabelFor(model => model.Password)</td>
-                <td>@Html.EditorFor(model => model.Password)</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>@Html.ValidationMessageFor(model => model.Password)</td>
-            </tr>
-            <tr>
-                <td> @ViewBag.error</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <input type="submit" name="name" value="Login" />
-                    <input type="reset" name="name" value="Clear" />
-                </td>
-            </tr>
-        </table>
-        }
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password)
+                    @Html.EditorFor(model => model.Password, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Password)
 
+
+                </div>
+
+                <button type="submit" class="btn btn-danger">Submit</button>
+                <button type="reset" class="btn btn-default" name="name" value="Clear">Clear</button>
+
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> @ViewBag.error</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+
+                        </td>
+                    </tr>
+                </table>
+            }
+
+        </div>
     </div>
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
-</body>
-</html>
+</div>
