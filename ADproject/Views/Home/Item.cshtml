@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Item";
-    if(Session["UserId"]==null)
+    if (Session["UserId"] == null)
     {
         Response.Redirect("~/Home/Admin");
     }
@@ -13,37 +13,86 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Img)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            <img src="@Url.Content(item.Img)" alt="Not found" width="80" height="80" />
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
-        </td>
-    </tr>
-}
 
-</table>
+<main>
+    <div class="content-title">
+        <h2>Overview</h2><i class="fa fa-angle-right"></i>
+        <div class="filter">
+            <a class="filter-item">today</a>
+            <a class="filter-item">month</a>
+            <a class="filter-item">year</a>
+        </div>
+        <button class="btn btn-default">Log out</button>
+    </div>
+    <div class="pill-wrapper">
+        <div class="pill">
+            <div class="pill-content">
+                <div class="pill-title">Overall Sale</div>
+                <div class="pill-value">1231</div>
+            </div>
+        </div>
+
+        <div class="pill">
+
+
+            <div class="pill-content">
+
+                <div class="pill-title">Overall Visited</div>
+                <div class="pill-value">1446</div>
+            </div>
+        </div>
+
+        <div class="pill">
+
+
+            <div class="pill-content">
+
+                <div class="pill-title">Overall Growth</div>
+                <div class="pill-value">65%</div>
+            </div>
+        </div>
+    </div>
+    <div class="content-title">
+    </div>
+    <div class="chart">
+        <h3>Todays sale</h3>
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Img)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            <img src="@Url.Content(item.Img)" alt="Not found" width="80" height="80"/>
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new {id = item.ProductId}) |
+                            @Html.ActionLink("Details", "Details", new {id = item.ProductId}) |
+                            @Html.ActionLink("Delete", "Delete", new {id = item.ProductId})
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</main>
