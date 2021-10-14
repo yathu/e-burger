@@ -72,7 +72,8 @@ textarea {
 }
 
 .main-nav li a {
-    color: #8f8f8f !important;
+    color: #767676 !important;
+    font-weight: 500;
 }
 
 .main-nav li a:hover {
@@ -162,10 +163,24 @@ textarea {
     font-family: Rubik-Medium, sans-serif;
     font-size: 20px;
     margin-bottom: 5px;
+    max-height: 50px;
+    min-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    line-height: 1.1;
+    padding-top: 5px;
 }
 
 .product-list .list-product-item .product-content p {
     margin-bottom: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
 }
 
 .product-list .list-product-item .product-content .price-container {
@@ -451,6 +466,8 @@ main {
 
 .chart {
     grid-column: 1 / 3;
+    max-height: 400px;
+    min-height: 400px;
 }
 
 .chart h3{
@@ -463,6 +480,16 @@ main {
     grid-column: 3 / 4;
     display: grid;
     grid-template-rows: 50px 1fr;
+    max-height: 400px;
+    min-height: 400px;
+}
+
+.activity-feed h3{
+    margin-left: 15px;
+    padding-bottom: 5px;
+}
+.activity-feed .table-responsive{
+    margin-top: 6px;
 }
 
 .feed {
